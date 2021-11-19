@@ -5,7 +5,7 @@ public class Ship {
     private final int maxCargo;
     private int cargo;
 
-    public Ship(String name, int maxCargo, int cargo) throws IllegalArgumentException {
+    public Ship(String name, int maxCargo, int cargo) {
         if (!isCargo(maxCargo, cargo))
             throw new IllegalArgumentException();
         this.name = name;
@@ -17,7 +17,7 @@ public class Ship {
         return cargo >= 0 && maxCargo >= cargo;
     }
 
-    public boolean load(int cargo) {
+    public boolean addCargo(int cargo) {
         if (!isLoadCargo(cargo) || cargo == 0)
             return false;
         this.cargo += cargo;
@@ -26,7 +26,7 @@ public class Ship {
         return true;
     }
 
-    public boolean unload(int cargo) {
+    public boolean reduceCargo(int cargo) {
         if (!isUnloadCargo(cargo) || cargo == 0)
             return false;
         this.cargo -= cargo;

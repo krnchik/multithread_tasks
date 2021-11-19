@@ -16,20 +16,25 @@ public class Main {
 
         new Thread(order).start();
 
-        order.unload(ship1, 500);
-        order.unload(ship2, 500);
-        order.unload(ship3, 500);
-        order.unload(ship4, 500);
-        order.unload(ship5, 500);
-        order.load(ship1, 500);
-        order.load(ship2, 500);
-        order.load(ship3, 500);
-        order.load(ship4, 500);
-        order.load(ship5, 500);
+        order.unload(ship1, 1500);
+        order.unload(ship2, 1500);
+        order.unload(ship3, 1500);
+        order.unload(ship4, 1500);
+        order.unload(ship5, 1500);
+        order.load(ship1, 1500);
+        order.load(ship2, 1500);
+        order.load(ship3, 1500);
+        order.load(ship4, 1500);
+        order.load(ship5, 1500);
         order.jointLoadUnload(ship1, 500, 250);
         order.jointLoadUnload(ship2, 500, 250);
         order.jointLoadUnload(ship3, 500, 250);
         order.jointLoadUnload(ship4, 500, 250);
         order.jointLoadUnload(ship5, 500, 250);
+        order.unload(ship1, 500);
+        order.unload(ship2, 500);
+        order.unload(ship3, 500);
+        order.unload(ship4, 500);
+        order.unload(ship5, 500);
     }
 }

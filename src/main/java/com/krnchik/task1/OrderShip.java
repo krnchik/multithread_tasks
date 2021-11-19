@@ -39,14 +39,12 @@ public class OrderShip implements Runnable {
 
     public void jointLoadUnload(Ship ship, int loadedCargo, int unloadedCargo) {
         orders.add(() -> {
-            if (ship.isLoadCargo(loadedCargo) && port.isUnloadCargo(loadedCargo)) {
-                ship.load(loadedCargo);
-                port.unload(loadedCargo);
+            if (ship.isLoadCargo(loadedCargo) && port.unload(loadedCargo)) {
+                ship.addCargo(loadedCargo);
             }
 
-            if (ship.isUnloadCargo(unloadedCargo) && port.isLoadCargo(unloadedCargo)) {
-                ship.unload(unloadedCargo);
-                port.load(unloadedCargo);
+            if (ship.isUnloadCargo(unloadedCargo) && port.load(unloadedCargo)) {
+                ship.reduceCargo(unloadedCargo);
             }
 
             try {

@@ -21,7 +21,15 @@ public class Port {
         return cargo >= 0 && maxCargo >= cargo;
     }
 
-    public boolean load(int cargo) {
+    private boolean isLoadCargo(int cargo) {
+        return (this.cargo.get() + cargo) <= maxCargo;
+    }
+
+    private boolean isUnloadCargo(int cargo) {
+        return (this.cargo.get() - cargo) >= 0;
+    }
+
+    public synchronized boolean load(int cargo) {
         if (!isLoadCargo(cargo) || cargo == 0) {
             return false;
         }
@@ -30,21 +38,13 @@ public class Port {
         return true;
     }
 
-    public boolean unload(int cargo) {
+    public synchronized boolean unload(int cargo) {
         if (!isUnloadCargo(cargo) || cargo == 0) {
             return false;
         }
         this.cargo.addAndGet((-1) * cargo);
         System.out.println("С порта разгрузили " + cargo + ". В порту " + this.cargo.get());
         return true;
-    }
-
-    public boolean isLoadCargo(int cargo) {
-        return (this.cargo.get() + cargo) <= maxCargo;
-    }
-
-    public boolean isUnloadCargo(int cargo) {
-        return (this.cargo.get() - cargo) >= 0;
     }
 
     public ExecutorService getBerths() {
