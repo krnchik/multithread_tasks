@@ -3,13 +3,10 @@ package com.krnchik.task5;
 import java.util.concurrent.Callable;
 
 public class Client implements Callable<Boolean> {
-    private final Restaurant restaurant;
+    private Restaurant restaurant;
     private Cashier cashier;
 
-    public Client(Restaurant restaurant) {
-        if (!isRestaurant(restaurant))
-            throw new IllegalArgumentException();
-        this.restaurant = restaurant;
+    public Client() {
     }
 
     private boolean isRestaurant(Restaurant restaurant) {
@@ -30,5 +27,9 @@ public class Client implements Callable<Boolean> {
 
     public void setCashier(Cashier cashier) {
         this.cashier = cashier;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

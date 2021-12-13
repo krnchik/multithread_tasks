@@ -41,6 +41,7 @@ public class Restaurant implements Runnable {
 
     public void addClient(Client client) {
         try {
+            client.setRestaurant(this);
             clients.put(client);
         } catch (InterruptedException e) {
             e.printStackTrace();
